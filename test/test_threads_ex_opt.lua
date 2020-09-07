@@ -15,10 +15,10 @@ local thread_code = function(...)
   assert_equal("#:", 6       , select("#", ...))
 end
 
-local llthreads = require"llthreads.ex"
+local llthreads2 = require"llthreads2.ex"
 
 -- pass `prelude` function that change thread arguments
-local thread = llthreads.new({thread_code, prelude = function(...)
+local thread = llthreads2.new({thread_code, prelude = function(...)
   return 1, nil, 'hello', ...
 end}, nil, 2, nil)
 

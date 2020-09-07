@@ -1,6 +1,6 @@
 if jit then
-  local llthreads = require "llthreads"
-  local thread = llthreads.new([[
+  local llthreads2 = require "llthreads2"
+  local thread = llthreads2.new([[
     if not package.preload.ffi then
       print("ffi does not register in thread")
       os.exit(-1)

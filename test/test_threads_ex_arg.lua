@@ -15,9 +15,9 @@ local thread_code = function(...)
   assert_equal("#:", 6       , select("#", ...))
 end
 
-local llthreads = require"llthreads.ex"
+local llthreads2 = require"llthreads2.ex"
 
-local thread = llthreads.new(thread_code, 1, nil, 'hello', nil, 2, nil)
+local thread = llthreads2.new(thread_code, 1, nil, 'hello', nil, 2, nil)
 
 assert(thread:start())
 

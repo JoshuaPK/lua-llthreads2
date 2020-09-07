@@ -13,7 +13,7 @@ local thread_code = function(...)
   assert_equal("#:", 4, select("#", ...))
 end
 
-local llthreads = require"llthreads.ex"
+local llthreads2 = require"llthreads2.ex"
 
 local prelude1 = function(...) return 1, ... end
 
@@ -27,7 +27,7 @@ local prelude = string.format([[
 ]], string.dump(prelude1), string.dump(prelude2))
 
 -- pass `prelude` function that change thread arguments
-local thread = llthreads.new({thread_code, prelude = prelude}, 3, 4)
+local thread = llthreads2.new({thread_code, prelude = prelude}, 3, 4)
 
 local a = assert(thread:start())
 

@@ -1,9 +1,9 @@
-local llthreads = require"llthreads"
+local llthreads2 = require"llthreads2"
 local utils     = require "utils"
 
 do
 
-local thread = llthreads.new(utils.thread_init .. [[
+local thread = llthreads2.new(utils.thread_init .. [[
   local sleep = require"utils".sleep
   while true do sleep(1) end
 ]])
@@ -25,7 +25,7 @@ for i = 1, 10 do collectgarbage("collect") end
 
 do
 
-local thread = llthreads.new(utils.thread_init .. [[
+local thread = llthreads2.new(utils.thread_init .. [[
   local sleep = require"utils".sleep
   sleep(1)
 ]])

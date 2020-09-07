@@ -18,14 +18,14 @@
 -- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 -- THE SOFTWARE.
 
--- Sub-thread processing example in Lua using llthreads - 1,000 quick sub-thread execution
+-- Sub-thread processing example in Lua using llthreads2 - 1,000 quick sub-thread execution
 
 -- luajit sub_threads.lua
 
 -- level 0 string literal enclosure [[  ]] of child execution code
 local thread_code = function(num_threads, ...)
     print("CHILD: received from ROOT params:", num_threads, ...)
-    local llthreads = require"llthreads.ex" -- need to re-declare this under this scope
+    local llthreads2 = require"llthreads2.ex" -- need to re-declare this under this scope
     local t = {} -- thread storage table
 
     -- create a new child sub-thread execution code - it requires level 1 literal string [=[ ]=] enclosures, level 2 would be [==[ ]==]
@@ -37,7 +37,7 @@ local thread_code = function(num_threads, ...)
     print("CHILD: Create sub threads:", num_threads)
     for i=1,num_threads do
         -- create child sub-thread with code to execute and the input parmeters
-        local thread = llthreads.new(executed_child_code , "number:", 1000 + i, "nil:", nil, "bool:", true) 
+        local thread = llthreads2.new(executed_child_code , "number:", 1000 + i, "nil:", nil, "bool:", true) 
         assert(thread:start()) -- start new child sub-thread
         table.insert(t, thread) -- append the thread at the end of the thread table
     end
@@ -52,12 +52,12 @@ local thread_code = function(num_threads, ...)
     return ...  -- return the parents' input params back to the root
 end
 
-local llthreads = require"llthreads.ex"
+local llthreads2 = require"llthreads2.ex"
 
 local num_threads = tonumber(arg[1] or 1000)
 
 -- create child thread.
-local thread = llthreads.new(thread_code, num_threads, "number:", 1000, "nil:", nil, "bool:", true)
+local thread = llthreads2.new(thread_code, num_threads, "number:", 1000, "nil:", nil, "bool:", true)
 -- start joinable child thread.
 assert(thread:start())
 -- wait for all child and child sub-threads to finish

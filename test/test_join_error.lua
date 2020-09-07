@@ -1,13 +1,13 @@
-local llthreads = require "llthreads"
+local llthreads2 = require "llthreads2"
 local utils     = require "utils"
 local sleep     = utils.sleep
 
 local include = utils.thread_init .. [[
-local llthreads = require"llthreads"
+local llthreads2 = require"llthreads2"
 local sleep = require "utils".sleep
 ]]
 
-local thread = llthreads.new(include .. [[
+local thread = llthreads2.new(include .. [[
   sleep(5)
 ]])
 

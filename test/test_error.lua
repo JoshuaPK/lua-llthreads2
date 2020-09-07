@@ -1,12 +1,12 @@
-local llthreads = require"llthreads"
+local llthreads2 = require"llthreads2"
 local utils     = require "utils"
 
 local include = utils.thread_init .. [[
-local llthreads = require"llthreads"
+local llthreads2 = require"llthreads2"
 ]]
 
 do
-    local thread = llthreads.new(include .. [[
+    local thread = llthreads2.new(include .. [[
       error({})
     ]])
     
@@ -16,8 +16,8 @@ do
     assert(not ok)
 end
 do
-    local thread = llthreads.new(include .. [[
-      llthreads.set_logger(function(msg) print("XXX", msg) end)
+    local thread = llthreads2.new(include .. [[
+      llthreads2.set_logger(function(msg) print("XXX", msg) end)
       error({})
     ]])
     
@@ -27,8 +27,8 @@ do
     assert(not ok)
 end
 do
-    local thread = llthreads.new(include .. [[
-      llthreads.set_logger(function(msg) end)
+    local thread = llthreads2.new(include .. [[
+      llthreads2.set_logger(function(msg) end)
       error({})
     ]])
     

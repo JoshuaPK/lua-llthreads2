@@ -1,6 +1,6 @@
-local llthreads = require"llthreads.ex"
+local llthreads2 = require"llthreads2.ex"
 
-local thread = llthreads.new(function() return 1 end)
+local thread = llthreads2.new(function() return 1 end)
 
 assert(not thread:started())
 

@@ -18,7 +18,7 @@
 -- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 -- THE SOFTWARE.
 
-local llthreads = require"llthreads"
+local llthreads2 = require"llthreads2"
 
 local sleep
 local status, socket = pcall(require,"socket")
@@ -89,7 +89,7 @@ return ...
 local function test_thread_value_copying(...)
 	local args = {...}
 	print("Main thread args:", dump(args))
-	local thread = llthreads.new(child_code, args)
+	local thread = llthreads2.new(child_code, args)
 	-- start joinable thread
 	assert(thread:start())
 

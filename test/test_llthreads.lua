@@ -18,27 +18,27 @@
 -- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 -- THE SOFTWARE.
 
-local llthreads = require"llthreads"
+local llthreads2 = require"llthreads2"
 local sleep     = require"utils".sleep
 
-print("LLThreads version : ", llthreads._VERSION)
+print("LLThreads version : ", llthreads2._VERSION)
 
 local function detached_thread(...)
-	local thread = llthreads.new([[ print("print_detached_thread:", ...) ]], ...)
+	local thread = llthreads2.new([[ print("print_detached_thread:", ...) ]], ...)
 	-- start detached thread
 	assert(thread:start(true))
 	return thread
 end
 
 local function print_thread(...)
-	local thread = llthreads.new([[ print("print_thread:", ...); ]], ...)
+	local thread = llthreads2.new([[ print("print_thread:", ...); ]], ...)
 	-- start joinable thread
 	assert(thread:start())
 	return thread
 end
 
 local function pass_through_thread(...)
-	local thread = llthreads.new([[ return "pass_thread:", ... ]], ...)
+	local thread = llthreads2.new([[ return "pass_thread:", ... ]], ...)
 	-- start joinable thread
 	assert(thread:start())
 	return thread

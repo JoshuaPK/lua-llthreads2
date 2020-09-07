@@ -1,8 +1,8 @@
-local llthreads = require"llthreads"
+local llthreads2 = require"llthreads2"
 local utils     = require"utils"
 
-local thread = llthreads.new(utils.thread_init .. [[
-  require "llthreads"
+local thread = llthreads2.new(utils.thread_init .. [[
+  require "llthreads2"
   local fn = ...
 
   if type(fn) ~= 'function' then
@@ -11,7 +11,7 @@ local thread = llthreads.new(utils.thread_init .. [[
   end
 
   fn("print('Done!'); require'os'.exit(0)"):start():join()
-]], llthreads.new)
+]], llthreads2.new)
 
 print(thread:start():join())
 os.exit(-1)

@@ -13,9 +13,9 @@ if math.type then
     assert_equal("2:", 'float', math.type(b))
   end
 
-  local llthreads = require"llthreads.ex"
+  local llthreads2 = require"llthreads2.ex"
 
-  local thread = llthreads.new(thread_code, 10, 20.0 )
+  local thread = llthreads2.new(thread_code, 10, 20.0 )
 
   assert(thread:start())
 
